@@ -1,0 +1,79 @@
+<div class="control-section">
+    <div class="col-lg-8">
+    <ejs-circulargauge id='gauge' style='display:block;' #gauge='' [allowPrint]='allowPrint'
+    background='transparent' [allowPdfExport]='allowPdfExport' [allowImageExport]='allowImageExport'
+    (load)='load($event)'>
+<e-axes>
+<e-axis radius='80%' startAngle=210 endAngle=150 minimum=0 maximum=8 [majorTicks]='majorTicks'
+    [minorTicks]='minorTicks' [lineStyle]='lineStyle' [labelStyle]="labelStyle">
+    <e-pointers>
+    <e-pointer value="6.2" radius='85%' [needleStartWidth]="needleStartWidth"
+        [needleEndWidth]="needleEndWidth" color='#E63B86' [linearGradient]="pointerLinearGradient"
+        [animation]='animation' pointerWidth="0" [cap]="cap" [needleTail]="tail">
+    </e-pointer>
+</e-pointers>
+<e-ranges>
+<e-range color="#E63B86" start="0" end="1" startWidth="22" endWidth="22"
+    [linearGradient]="rangeLinearGradient"></e-range>
+<e-range color="#E0E0E0" start="1" end="8" startWidth="22" endWidth="22"></e-range>
+</e-ranges>
+</e-axis>
+</e-axes>
+</ejs-circulargauge>
+    </div>
+    <div class="col-lg-4 property-section">
+        <div class="property-panel-section">
+            <div class="property-panel-header">Properties</div>
+            <div class="property-panel-content">
+                <table id="property" title="Properties" style="width: 100%">
+                    <colgroup>
+                        <col span="1" style="width: 50%;">
+                        <col span="1" style="width: 50%;">
+                    </colgroup>
+                    <tr style="height: 50px;">
+                        <td>
+                            <div style="font-size:14px">Export Type</div>
+                        </td>
+                        <td>
+                            <div>
+                                <select name="selectIndex" autocomplete="off" id="exporttype" style="width: 90%">
+                                    <option value="JPEG">JPEG</option>
+                                    <option value="PNG">PNG</option>
+                                    <option value="SVG">SVG</option>
+                                    <option value="PDF">PDF</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="height: 50px;">
+                        <td>
+                            <div style="font-size:14px">File Name</div>
+                        </td>
+                        <td>
+                            <div class="e-float-input" style='margin-top: 0px;'>
+                                <input type="text" value="Circular Gauge" id="fileName" style="width: 90%">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="height: 70px;">
+                        <td align="right" style="padding-right:5%">
+                            <button ejs-button isPrimary=true (click)='onClickExport($event)' content="Export"
+                                    id="export">EXPORT</button>
+                        </td>
+                        <td align="left" style="padding-left:5%">
+                            <button ejs-button isPrimary=true (click)='onClickPrint($event)' content="Print"
+                                    id="print">PRINT</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- custom code start -->
+<style>
+    .control-section {
+        min-height: 450px;
+    }
+</style>
+<!-- custom code end -->
